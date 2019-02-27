@@ -21,14 +21,26 @@
             <a href="#" @click="changeNavIndex(index)">{{ item }}</a>
           </li>
         </ul>
+
+        <!-- 入口组件 -->
+        <div class="navbar-right">
+          <TheEntry/>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  // 引入 TheEntry.vue 的默认值
+  import TheEntry from '@/components/layouts/TheEntry'
+
   export default {
     name: 'TheHeader',
+    // 添加 components 选项，并注册 TheEntry
+    components: {
+      TheEntry
+    },
     data() {
       return {
         logo: {
