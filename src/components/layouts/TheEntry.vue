@@ -11,7 +11,7 @@
           <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
-          <li><a href="#"><i class="fa fa-sign-out text-md"></i>退出</a></li>
+          <li><a @click="logout" href="javascript:;"><i class="fa fa-sign-out text-md"></i>退出</a></li>
         </ul>
       </li>
     </ul>
@@ -41,6 +41,11 @@
         // 映射 this.user 为 store.state.user
         'user'
       ])
+    },
+    methods: {
+      logout() {
+        this.$store.dispatch('logout')
+      }
     }
   }
 </script>

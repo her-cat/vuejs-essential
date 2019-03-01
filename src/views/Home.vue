@@ -18,6 +18,9 @@
     beforeRouteEnter(to, from, next) {
       // 路由的名称，对应路由配置中的 name
       const fromName = from.name
+      // 获取 logout 参数
+      const logout = to.params.logout
+
       // 确认导航
       next(vm => {
         // 通过 vm 参数访问组件实例，已登录时，评估路由名称
@@ -28,8 +31,22 @@
               vm.showMsg('注册成功')
               break
           }
+        } else if (logout) {
+          vm.showMsg('操作成功')
         }
       })
+    },
+    computed: {
+      auth() {
+        return this.$store.state.auth
+      }
+    },
+    watch: {
+      auth(value) {
+        if (!value) {
+          this.showMsg('操作成功')
+        }
+      }
     },
     methods: {
       showMsg(msg, type = 'success') {
