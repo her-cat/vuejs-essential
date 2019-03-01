@@ -2,7 +2,7 @@
   <div class="navbar-right">
     <ul v-if="auth" class="nav navbar-nav github-login">
       <li>
-        <a href="javascript:;">
+        <a v-dropdown href="javascript:;">
           <span v-if="user">
             <img v-if="user.avatar" :src="user.avatar" class="avatar-topnav">
             <span v-if="user.name">{{ user.name }}</span>
