@@ -29,7 +29,7 @@ const mutations = {
 const actions = {
   login({ commit }, user) {
     // 登录时有传用户信息，就更新下用户信息
-    if (user) commit('UPDATE_USER', user)
+    if (user) commit('USER_UPDATE', user)
     // 更新当前用的登录状态为已登录
     commit('UPDATE_AUTH', true)
     // 跳转到首页
