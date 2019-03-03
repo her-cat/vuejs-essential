@@ -31,6 +31,8 @@ function validate(el, modifiers, bindingValue) {
   } else {
     showError(el)
   }
+
+  checkIsCanSubmit(el)
 }
 
 // 显示或隐藏错误提示元素
@@ -62,6 +64,17 @@ function getErrorElement(el) {
   }
 
   return errorElement
+}
+
+function checkIsCanSubmit(el) {
+  // 指定当前一系列验证项的父级，我们这里指定为含 data-validator-form 的元素
+  const form = el.closest('[data-validator-form]')
+  // 指定一个按钮来检查所有验证项，我们这里指定为含 type=submit 的元素
+  const submitBtn = form.querySelector('[type=submit]');
+  // 获取错误信息
+  const errors = form.querySelectorAll('.has-error')
+  // 通过有无错误信息来控制是否可以提交
+  submitBtn.canSubmit = !errors.length
 }
 
 export default {
@@ -100,20 +113,7 @@ export default {
 
     if (submitBtn) {
       // 提交处理器
-      const submitHandler = () => {
-        // 验证所有项
-        validate(el, modifiers, value)
-        // 获取错误信息
-        const errors = form.querySelectorAll('.has-error')
-
-        if (!errors.length) {
-          // 没有错误信息时，在按钮上添加一个 canSubmit 属性，并指定为 true
-          submitBtn.canSubmit = true
-        } else {
-          // 有错误信息时，在按钮上添加一个 canSubmit 属性，并指定为 false
-          submitBtn.canSubmit = false
-        }
-      }
+      const submitHandler = () => validate(el, modifiers, value)
 
       // 在按钮上的添加 click 事件监听
       submitBtn.addEventListener('click', submitHandler, false)
