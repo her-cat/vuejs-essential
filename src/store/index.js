@@ -13,7 +13,7 @@ const state = {
 }
 
 const mutations = {
-  USER_UPDATE(state, user) {
+  UPDATE_USER(state, user) {
     // 改变 user 的值
     state.user = user
     // 将改变后的值存入 localStorage
@@ -29,7 +29,7 @@ const mutations = {
 const actions = {
   login({ commit }, user) {
     // 登录时有传用户信息，就更新下用户信息
-    if (user) commit('USER_UPDATE', user)
+    if (user) commit('UPDATE_USER', user)
     // 更新当前用的登录状态为已登录
     commit('UPDATE_AUTH', true)
     // 跳转到首页
