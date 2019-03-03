@@ -12,6 +12,8 @@ export default {
       const target = e.target;
       // 如果点击的是当前元素，或者是当前元素的后代节点，就不处理
       if (target.isSameNode(el) || el.contains(target)) return
+      // 父级元素不存在就不处理
+      if (el.parentELement === undefined) return;
       // 找到当前元素的父元素，移除 open 类
       el.parentELement.classList.remove('open')
     }
