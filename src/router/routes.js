@@ -20,5 +20,10 @@ export default [
     path: '*',
     // 重定向
     redirect: '/'
+  },
+  {
+    path: '/users/1/edit',
+    name: 'EditUsers',
+    component: () => import('@/views/users/Edit')
   }
 ]
