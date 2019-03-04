@@ -103,6 +103,8 @@ export default {
       el.removeEventListener(eventType, handler, false)
       el.destroy = null
     }
+    // 当页面加载完毕后就检查是否可以提交
+    window.onload = () => checkIsCanSubmit(el)
   },
   inserted(el, binding, vnode) {
     const { value, modifiers } = binding
