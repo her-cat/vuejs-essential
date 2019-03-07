@@ -28,7 +28,7 @@ export const post = ({ commit, state }, { article, articleId }) => {
       })
 
       commit('UPDATE_ARTICLES', articles)
-      router.push({ name: 'Home', params: { articleId, showMsg: true }})
+      router.push({ name: 'Content', params: { articleId, showMsg: true }})
     }
   }
 }
